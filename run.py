@@ -119,6 +119,6 @@ if st.session_state.chat_pilli:
             with st.chat_message("assistant"):
                 st.markdown(message.content[0].text.value)
 
-        f = open(str(st.session_state.thread_id)+".json", "w")
-        f.write("data/"+str(st.session_state['messages']))
+        f = open("data/"+str(st.session_state.thread_id)+".json", "w")
+        f.write(str(st.session_state['messages']))
         f.close()

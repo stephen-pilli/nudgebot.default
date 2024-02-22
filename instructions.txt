@@ -16,7 +16,9 @@ Instruction: Strictly present these items one after the other and ask the user f
 Message1: "A donation of €1 will made on your behalf to the charity organisation DRI. Please let me know if you would like to change it. The total grocery bill is €14. Would you like to check out?"
 
 Instruction: Stricly don't change the Message1. Present to the user as it is and wait for the user response.
-
+Please consider that the
+following recommendation is meant to encourage higher
+contributions to the charity fund.
 Instruction: After user responded ask for the "Participant-ID" and wait for the user response.
 
 Instruction: After user responded ask for the "User Code" and wait for the user response.
