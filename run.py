@@ -1,7 +1,7 @@
 import openai
 import streamlit as st
 import time
-
+import re
 
 messages_counter = 0
 assistant_id = "asst_rmysPCSULTOx88mnUgNBoY0b"
@@ -69,7 +69,7 @@ if st.session_state.chat_pilli:
         with st.chat_message(message["role"]): 
             st.markdown(message["content"])
         
-    if prompt := st.chat_input("Show me what you got."):
+    if prompt := st.chat_input("Hi, I want to shop."):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
@@ -116,7 +116,11 @@ if st.session_state.chat_pilli:
         for message in assistant_messages_for_run:
             st.session_state.messages.append({"role": "assistant", "content": message.content[0].text.value})
             with st.chat_message("assistant"):
-                st.markdown(message.content[0].text.value)
+                if re.search("#CODE-09#", message.content[0].text.value) != None:
+                    st.write("Submit the following code:", str(st.session_state.thread_id).replace("thread_", ""))
+                    st.write("Thanks for participating, you may click the finish button")
+                else: 
+                    st.markdown(message.content[0].text.value)
 
         f = open("data/"+str(st.session_state.thread_id)+".json", "w")
         f.write(str(st.session_state['messages']))
